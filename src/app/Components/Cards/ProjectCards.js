@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react';
+import ImageDialog from '../Dialog/ImageDialog';
 
 const ProjectCard = ({ 
   index,
@@ -7,9 +8,19 @@ const ProjectCard = ({
   title1, 
   subtitle1, 
   body1,
-  onEditClick
+  onEditClick,
+  setImagePath,
+  setOpenImage
 }) => {
   const [expanded, setExpanded] = useState(false);
+
+
+  const handleOpenImage = (image_path) => {
+    setImagePath(image_path)
+    setOpenImage(true);
+  }
+
+
   return (
     <div className="w-full max-w-3xl mx-auto my-6">
       <div className="group rounded-1xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-transparent backdrop-blur-sm border border-white/10">
@@ -17,15 +28,15 @@ const ProjectCard = ({
         {/* Header with image and overlay */}
         <div className="relative">
           {/* Image container with gradient overlay */}
-          <div className="w-full h-100 md:h-100 relative overflow-hidden">
+          <div className="w-full h-64 md:h-96 lg:h-[31rem] relative overflow-hidden">
             <img
               src={img_path || "/api/placeholder/800/600"}
               loading="lazy"
               alt={title1}
-              className="w-full h-full object-fill transition-transform duration-500 group-hover:scale-105"
+              onClick={() => handleOpenImage(img_path)}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             {/* Gradient overlay that fades up from bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent" />
           </div>
           
           {/* Title positioned over the image */}
@@ -48,7 +59,7 @@ const ProjectCard = ({
             
             {/* Fade out effect when collapsed */}
             {!expanded && (
-              <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-black/20 to-transparent" />
             )}
           </div>
           <div className='flex gap-2'>
@@ -92,6 +103,15 @@ const ProjectCard = ({
 };
 
 export const ProjectCards = ({ projects, title = "Projects", onEditClick }) => {
+
+  const [openImage, setOpenImage] = useState(false);
+  const [imagePath, setImagePath] = useState(null);
+
+  const handleCloseImage = () => {
+    setOpenImage(false)
+    setImagePath(null);
+  }
+
   return (
     <div className="mt-24">
       <p className="text-md text-center mb-12">{title}</p >
@@ -106,9 +126,13 @@ export const ProjectCards = ({ projects, title = "Projects", onEditClick }) => {
               body1={project.details.body1}
               hoverShadowColor={project.hoverShadowColor}
               onEditClick={onEditClick}
+              setImagePath={setImagePath}
+              setOpenImage={setOpenImage}
             />
           ))}
         </div>
+
+        <ImageDialog open={openImage} img_path={imagePath} onClose={handleCloseImage} />
     </div>
   );
 };

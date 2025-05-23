@@ -7,7 +7,6 @@ import { PROD1 } from "@/app/Static/static";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import CommitDialog from "../Dialog/CommitDialog";
-import { FaBeer } from "react-icons/fa";
 import { GiDatabase } from "react-icons/gi";
 import { TbCloudComputing } from "react-icons/tb";
 import { FaCodeBranch } from "react-icons/fa";
@@ -101,7 +100,6 @@ export default function HomepageHero(){
               <br />
             
               <div className="content-container">
-                  <h4>Areas of focus</h4>
                   <br/>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                   {cardData.map((card, index) => (

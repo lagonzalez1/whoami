@@ -34,31 +34,36 @@ export default function HomepageToolbar() {
     header: {
       position: 'fixed',
       top: 0,
-      width: '100%',
+      width: '100vw',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '1rem 2rem',
       backdropFilter: 'blur(10px)',
-      backgroundColor: 'rgba(255, 255, 255, 0.05)',
-      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      WebkitBackdropFilter: 'blur(10px)', // Safari
+      transform: 'translateZ(0)', // Force GPU
+      backgroundColor: 'hsla(0, 0%, 100%, 0.05)',
+      borderBottom: '1px solid hsla(0, 0%, 100%, 0.1)',
       color: 'white',
       zIndex: 1000,
     },
     left: {
-      fontSize: '1.25rem',
-      fontWeight: 'bold',
+      flex: 1
     },
     right: {
       display: 'flex',
       gap: '1rem',
+      marginRight: '-1rem', // Fallback for gap
+      '& > *': {
+        marginRight: '1rem', // Fallback for gap
+      },
     },
     button: {
-      background: 'rgba(255, 255, 255, 0.1)',
-      border: '1px solid rgba(255, 255, 255, 0.2)',
+      background: 'hsla(0, 0%, 100%, 0.1)',
+      border: '1px solid hsla(0, 0%, 100%, 0.2)',
       color: 'white',
       padding: '0.5rem 1rem',
-      borderRadius: '9999px',
+      borderRadius: '0.5rem', // Safer than 9999px
       cursor: 'pointer',
       transition: 'background 0.2s ease',
     },
