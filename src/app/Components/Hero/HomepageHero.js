@@ -113,7 +113,7 @@ export default function HomepageHero(){
                   </div>
               </div>
               <div className="content-container justify-items-center">
-                <h1>Experiance</h1>
+                <h1>Experience</h1>
                 {
                   loading ? 
                   <Loader />
