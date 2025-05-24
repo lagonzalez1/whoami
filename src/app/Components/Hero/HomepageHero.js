@@ -23,7 +23,7 @@ const cardData = [
       text:'Scalable system design has naturally led to strong experience with AWS cloud services.'},
     { title: 'Database', 
       icon: <GiDatabase fontSize={30} /> , 
-      text: 'Experianced with both SQL (PostgreSQL) and NoSQL databases.'},
+      text: 'Experienced with both SQL (PostgreSQL) and NoSQL databases.'},
   ];
 
   const TransparentCard = ({ icon, title, text }) => {
