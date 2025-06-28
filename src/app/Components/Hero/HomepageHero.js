@@ -10,9 +10,10 @@ import CommitDialog from "../Dialog/CommitDialog";
 import { GiDatabase } from "react-icons/gi";
 import { TbCloudComputing } from "react-icons/tb";
 import { FaCodeBranch } from "react-icons/fa";
+import {projects} from "../../Data/data.js"
 
 
-const API = "https://ihl5xv97x3.execute-api.us-west-1.amazonaws.com/upload_project"
+//const API = "https://ihl5xv97x3.execute-api.us-west-1.amazonaws.com/upload_project"
 
 const cardData = [
     { title: 'Software', 
@@ -28,28 +29,36 @@ const cardData = [
 
   const TransparentCard = ({ icon, title, text }) => {
     return (
-      <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-1xl p-8 flex flex-col
-       items-center text-center hover:bg-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-        <div className="p-4 mb-6 h-14 w-14 flex items-center justify-center">
+      <div
+      role={'button'}
+      className="group
+        bg-white/5 backdrop-blur-lg border border-white/20 rounded-3xl p-6
+        flex flex-col items-center text-center cursor-pointer
+        transition transform
+        hover:-translate-y-1 hover:scale-105 hover:bg-white/10 hover:shadow-xl
+        focus:outline-none focus:ring-4 focus:ring-indigo-500/40"
+    >
+      <span className="h-8 w-8 text-indigo-400 group-hover:text-white transition-colors">
           {icon}
-        </div>
-        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-        <p className="text-xs text-white">{text}</p>
-      </div>
-
+        </span>
+      <h3 className="text-xl font-semibold text-white mb-2 transition-colors group-hover:text-indigo-100">
+        {title}
+      </h3>
+      <p className="text-sm text-gray-100 max-w-xs">
+        {text}
+      </p>
+    </div>
     );
   };
 
 export default function HomepageHero(){
     const handleButtonClick = async () => { }
     const [error, setError] = useState();
-    const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(false);
     const [openEdit, setOpenEdit] = useState(false);
     const [editValues, setEditValues] = useState({title1: '', body1: '', subtitle1: '', index: null});
 
     useEffect(() => {
-      getProjectDetails();
     }, [])
   
     const openEditDialog = (values) => {
@@ -62,21 +71,8 @@ export default function HomepageHero(){
       setOpenEdit(false);
     }
 
-    const getProjectDetails = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.get(API);
-        if (response) {
-          setProjects(response.data);
-        }
-      }
-      catch(error){
-        setError('Unable to get project details');
-      }
-      finally {
-        setLoading(false);
-      }
-    }
+
+
     return(
         <>
         <div className="content-container">
