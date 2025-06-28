@@ -22,10 +22,8 @@ export default function HomepageToolbar() {
         <div style={styles.left}></div>
         <div style={styles.right}>
           <button style={styles.button} onClick={() => setOpen(true)}>Contact</button>
-          <button style={styles.button} onClick={() => setOpenCommit(true)}>Commit</button>
         </div>
         <ContactDialog open={open} onClose={onClose} onOpen={onOpen} />
-        <CommitDialog open={openCommit} onClose={onCloseCommit} onOpen={onOpenCommit} />
       </header>
     );
   }

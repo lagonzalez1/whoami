@@ -128,7 +128,7 @@ export default function HomepageHero(){
                   subtitle1={editValues ? editValues.subtitle1 : null}
                   index={editValues ? editValues.index : null}  />
             </div> 
-          </div>
+        </div>
         </>
     )
 }
