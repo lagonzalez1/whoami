@@ -41,14 +41,17 @@ export default function ProjectCard({
 
       {/* Links */}
       <div className="flex space-x-6">
+        {link !== '' ? 
         <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-teal-300 text-sm hover:underline"
-        >
-          Link
-        </a>
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-teal-300 text-sm hover:underline"
+      >
+        Link
+      </a>: null}
+      {
+        github !== '' ?
         <a
           href={github}
           target="_blank"
@@ -57,6 +60,9 @@ export default function ProjectCard({
         >
           GitHub
         </a>
+        : null
+      }
+        
       </div>
     </div>
   );
