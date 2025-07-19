@@ -1,4 +1,7 @@
 "use client"
+
+import { GITHUB, LINKEDIN } from "./data";
+
 // components/ContactDialog.js
 
 export default function ContactDialog(props) {
@@ -12,14 +15,14 @@ export default function ContactDialog(props) {
             <ul style={styles.list}>
               <li>
                 <strong>LinkedIn:</strong>{' '}
-                <a href="" target="_blank" rel="noreferrer">
-                  linkedin.com/in/your-profile
+                <a href={LINKEDIN} target="_blank" rel="noreferrer">
+                  LinkedIn
                 </a>
               </li>
               <li>
                 <strong>GitHub:</strong>{' '}
-                <a href="https://github.com/your-username" target="_blank" rel="noreferrer">
-                  github.com/your-username
+                <a href={GITHUB} target="_blank" rel="noreferrer">
+                  Github
                 </a>
               </li>
               <li>

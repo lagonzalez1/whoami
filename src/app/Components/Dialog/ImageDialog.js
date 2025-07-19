@@ -15,8 +15,7 @@ export default function ImageDialog(props) {
               alt={props.img_path}
               className="w-full h-full object-fit transition-transform duration-500 group-hover:scale-105"
             />
-            {/* Gradient overlay that fades up from bottom */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
+            <div className="absolute inset-0 from-black/40 via-black/20" />
           </div>
             <button onClick={() => props.onClose()} style={styles.closeButton}>
               Close
