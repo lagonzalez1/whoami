@@ -8,7 +8,7 @@ const AboutMeHero = () => {
         <div className="relative">
           <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-45"></div>
           <img
-            src="/images/myself.jpeg" // Replace with your actual photo
+            src="https://tracker-client-storage.s3.us-west-1.amazonaws.com/static_frontend_images/myself.jpeg" // Replace with your actual photo
             className="max-w-sm rounded-lg shadow-2xl relative"
             alt="Me"
           />
