@@ -6,6 +6,7 @@ import { ProjectCards } from "../Cards/ProjectCards";
 import {projects} from "../../Data/data.js"
 import TransparentCard from "../Cards/TransparentCard";
 import { cardData } from "./data";
+import { Card, CardContent, CardHeader, Typography } from "@mui/material";
 
 
 
@@ -50,6 +51,9 @@ export default function HomepageHero(){
               
             
               <div className="content-container">
+
+                
+
                   <br/>
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
                   {cardData.map((card, index) => (
@@ -62,6 +66,8 @@ export default function HomepageHero(){
                   ))}
                   </div>
               </div>
+
+
               <div className="content-container">
                 <h1>Experience</h1>
                 <ProjectCards 

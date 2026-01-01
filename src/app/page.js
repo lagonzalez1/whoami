@@ -1,22 +1,15 @@
-import Image from "next/image";
-import HomepageToolbar from "./Components/Toolbar/HomepageToolbar";
-import HomepageBanner from "./Components/Banner/HomepageBanner";
-import { ProjectCards } from "./Components/Cards/ProjectCards";
-import HomepageHero from "./Components/Hero/HomepageHero";
+import AboutMeHero from "./Components/Hero/AboutMeHero";
+import AboutMeTimeline from "./Components/Timeline/AboutMeTimeline";
+import SkillsContent from "./Components/Sections/SkillsContent";
+import ProjectsContent from "./Components/Sections/ProjectsContent";
 
 export default function Home() {
   return (
-    <section>
-      <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center p-3 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <HomepageToolbar /> {/* Will go in the first grid row */}
-        <main className="flex flex-col gap-[120px] row-start-2 items-center sm:items-start">
-          <HomepageBanner />
-          <HomepageHero />
-        </main>
-        
-        {/* Optional third row content, like a footer */}
-      </div>
-    </section>
-
+    <>
+      <AboutMeHero />
+      <SkillsContent />
+      <AboutMeTimeline />
+      <ProjectsContent />
+    </>
   );
 }

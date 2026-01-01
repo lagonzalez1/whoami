@@ -1,69 +1,81 @@
-"use client"
+"use client";
+import React, { useState } from 'react';
+import Link from 'next/link';
+import Modal from '../Modal/Modal';
+import ProjectsTable from '../Tables/ProjectsTable';
+import { projects } from '../Sections/Data';
 
-import react, {useEffect, useState} from "react";
-import ContactDialog from "../Dialog/ContactDialog";
-import CommitDialog from "../Dialog/CommitDialog";
 
-react
-// components/Toolbar.js
-export default function HomepageToolbar() {
+const Navbar = () => {
+  const [activeModal, setActiveModal] = useState(null);
 
-    const [open, setOpen] = useState(false);
-    const [openCommit, setOpenCommit] = useState(false);
+  const openModal = (type) => setActiveModal(type);
+  const closeModal = () => setActiveModal(null);
 
-    const onOpen = () => { setOpen(true);}
-    const onClose = () => { setOpen(false); }
-
-    const onCloseCommit = () => { setOpenCommit(false);}
-    const onOpenCommit = () => { setOpenCommit(true);}
-
-    return (
-      <header style={styles.header}>
-        <div style={styles.left}></div>
-        <div style={styles.right}>
-          <button style={styles.button} onClick={() => setOpen(true)}>Contact</button>
+  return (
+    <>
+      <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-[100] w-[100%] max-w-5xl">
+        <div className="navbar bg-base-100/30 backdrop-blur-md border border-white/10 shadow-2xl rounded-2xl px-4 md:px-8">
+          <div className="flex-1">
+            <Link href="/" className="btn btn-ghost text-xl font-bold tracking-tighter">
+              Luis<span className="text-primary"> A</span> Gonzalez
+            </Link>
+          </div>
+          <div className="flex-none">
+            <ul className="menu menu-horizontal gap-2 px-1 font-medium">
+              <li>
+                <button 
+                  onClick={() => openModal('contact')}
+                  className="hover:text-primary transition-colors"
+                >
+                  Contact
+                </button>
+              </li>
+              <li>
+                <button 
+                  onClick={() => openModal('projects')}
+                  className="hover:text-primary transition-colors"
+                >
+                  Projects
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
-        <ContactDialog open={open} onClose={onClose} onOpen={onOpen} />
-      </header>
-    );
-  }
-  
-  const styles = {
-    header: {
-      position: 'fixed',
-      top: 0,
-      width: '100vw',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: '1rem 2rem',
-      backdropFilter: 'blur(10px)',
-      WebkitBackdropFilter: 'blur(10px)', // Safari
-      transform: 'translateZ(0)', // Force GPU
-      backgroundColor: 'hsla(0, 0%, 100%, 0.05)',
-      borderBottom: '1px solid hsla(0, 0%, 100%, 0.1)',
-      color: 'white',
-      zIndex: 1000,
-    },
-    left: {
-      flex: 1
-    },
-    right: {
-      display: 'flex',
-      gap: '1rem',
-      marginRight: '-1rem', // Fallback for gap
-      '& > *': {
-        marginRight: '1rem', // Fallback for gap
-      },
-    },
-    button: {
-      background: 'hsla(0, 0%, 100%, 0.1)',
-      border: '1px solid hsla(0, 0%, 100%, 0.2)',
-      color: 'white',
-      padding: '0.5rem 1rem',
-      borderRadius: '0.5rem', // Safer than 9999px
-      cursor: 'pointer',
-      transition: 'background 0.2s ease',
-    },
-  };
-  
+      </nav>
+
+      {/* Reusable Modal Component */}
+      <Modal 
+        isOpen={!!activeModal} 
+        onClose={closeModal} 
+        size={activeModal === 'contact' ? 'sm' : 'lg'}
+        title={activeModal === 'contact' ? 'Contact' : 'Experience'}
+      >
+        {activeModal === 'contact' && (
+          <ul className="menu bg-base-200 rounded-box shadow-xl">
+            <li>
+                <a href="lagonzalez6@myyahoo.com">
+                <span className="font-bold">Email:</span> lagonzalez6@myyahoo.com
+                </a>
+            </li>
+            <li>
+                <a href="https://www.linkedin.com/in/luis-gonzalez-54a035220/" target="_blank" rel="noopener noreferrer">
+                <span className="font-bold">LinkedIn:</span> link
+                </a>
+            </li>
+            <li>
+                <a href="tel:+">
+                <span className="font-bold">Phone:</span> +909-943-****
+                </a>
+            </li>
+        </ul>
+        )}
+        {activeModal === 'projects' && (
+          <ProjectsTable projects={projects} />
+        )}
+      </Modal>
+    </>
+  );
+};
+
+export default Navbar;
