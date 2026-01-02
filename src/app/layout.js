@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="h-full" data-theme="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {/* Fixed header spanning full width */}
-        <header>
+        <header className="sticky top-0 z-[100] w-full">
           <HomepageToolbar />
         </header>
 

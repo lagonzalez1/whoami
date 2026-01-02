@@ -21,23 +21,51 @@ export default function HomepageFooter() {
                 onClose={() => setShowModal(false)} 
                 title="Account Update"
             >
-                <ul className="menu bg-base-200 rounded-box shadow-xl">
-                    <li>
-                        <a href="lagonzalez6@myyahoo.com">
-                        <span className="font-bold">Email:</span> lagonzalez6@myyahoo.com
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/luis-gonzalez-54a035220/" target="_blank" rel="noopener noreferrer">
-                        <span className="font-bold">LinkedIn:</span> link
-                        </a>
-                    </li>
-                    <li>
-                        <a href="tel:+">
-                        <span className="font-bold">Phone:</span> +909-943-****
-                        </a>
-                    </li>
-                </ul>
+                <div className="overflow-x-auto">
+                    <table className="table w-full bg-base-200 shadow-xl rounded-box">
+                        {/* head */}
+                        <thead>
+                        <tr className="border-b border-white/10">
+                            <th className="text-primary uppercase tracking-wider">Method</th>
+                            <th className="text-primary uppercase tracking-wider">Details</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {/* Email Row */}
+                        <tr className="hover:bg-base-300 transition-colors border-b border-white/10">
+                            <td className="font-bold">Email</td>
+                            <td>
+                            <a href="mailto:lagonzalez6@myyahoo.com" className="hover:text-primary transition-colors">
+                                lagonzalez6@myyahoo.com
+                            </a>
+                            </td>
+                        </tr>
+                        {/* LinkedIn Row */}
+                        <tr className="hover:bg-base-300 transition-colors border-b border-white/10">
+                            <td className="font-bold">LinkedIn</td>
+                            <td>
+                            <a 
+                                href="https://www.linkedin.com/in/luis-gonzalez-54a035220/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="link link-hover"
+                            >
+                                luis-gonzalez-54a035220
+                            </a>
+                            </td>
+                        </tr>
+                        {/* Phone Row */}
+                        <tr className="hover:bg-base-300 transition-colors border-none">
+                            <td className="font-bold">Phone</td>
+                            <td>
+                            <a href="tel:+19099430000" className="hover:text-primary transition-colors">
+                                +909-943-****
+                            </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    </div>
             </Modal>
             </div>
         </nav>

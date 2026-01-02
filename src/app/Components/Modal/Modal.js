@@ -15,7 +15,7 @@ const Modal = ({ isOpen, onClose, title, children, size = "sm" }) => {
   const selectedSize = sizeClasses[size] || sizeClasses.md;
 
   return (
-    <div className="modal modal-open modal-bottom sm:modal-middle backdrop-blur-sm transition-all">
+    <div className="modal modal-open modal-center sm:modal-middle backdrop-blur-sm transition-all">
       {/* We combine the dynamic size class here. 
          'w-11/12' ensures it stays responsive on small screens.
       */}
